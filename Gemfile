@@ -25,3 +25,5 @@ gem "listen", "~> 3.7"
 gem "dry-configurable", "~> 0.15.0"
 gem "dotenv", "~> 2.8"
 gem "concurrent-ruby", "~> 1.1"
+
+gem "standard", group: [:development, :test]

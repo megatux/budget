@@ -2,6 +2,7 @@ require "bundler/setup"
 require_relative "config/settings"
 require "sequel_tools"
 require "sequel/core"
+require "standard/rake"
 
 db = Sequel.connect(Settings.database_url, test: false, keep_reference: false)
 
