@@ -20,7 +20,7 @@ module Helpers
   def price(value, currency: true)
     text = Money.from_amount(value).format
     text.sub!(/,\d{2}/, "") # remove cents
-    text.sub!(" Kč", "") unless currency
+    text.sub!(" $", "") unless currency
     text
   end
 
