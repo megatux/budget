@@ -9,7 +9,7 @@ module Helpers
       "Home" => root_path,
       "Expenses" => expenses_path,
       "Rules" => rules_path,
-      "Categories" => categories_path,
+      "Categories" => categories_path
     }
   end
 

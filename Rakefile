@@ -13,19 +13,19 @@ namespace :db do
     dump_schema_on_migrate: Settings.env == "development",
     schema_location: "db/schema.sql",
     log_level: :info,
-    sql_log_level: :info,
+    sql_log_level: :info
   }, self)
 end
 
 desc "Open a ruby console with the application loaded"
-task :console => :boot do
+task console: :boot do
   require "irb"
   ARGV.clear
   IRB.start
 end
 
 desc "Import new transactions into the database"
-task :import => :boot do
+task import: :boot do
   from = Date.new(2023, 1, 1)
   to = Date.today
 

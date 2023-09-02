@@ -21,17 +21,17 @@ class ImportTransactions < ApplicationService
 
   def sync_expenses
     new_transactions = FioTransaction
-      .where{amount < 0}
+      .where { amount < 0 }
       .exclude(expense: Expense.dataset)
 
     rules = Rule.order(:id).all
 
-    values = new_transactions.each do |transaction|
+    new_transactions.each do |transaction|
       expense = Expense.create(
         fio_transaction: transaction,
         description: transaction.message || transaction.note,
         amount: -transaction.amount,
-        date: transaction.date,
+        date: transaction.date
       )
       expense.apply_rules(rules)
     end
@@ -46,7 +46,7 @@ class ImportTransactions < ApplicationService
         account: transaction["Protiúčet"] ? [transaction.fetch("Protiúčet"), transaction["Kód banky"]].compact.join(" / ") : nil,
         message: transaction["Zpráva pro příjemce"],
         note: transaction["Komentář"],
-        type: transaction.fetch("Typ"),
+        type: transaction.fetch("Typ")
       }
     rescue KeyError
       p transaction

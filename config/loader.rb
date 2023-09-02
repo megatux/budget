@@ -17,7 +17,7 @@ if Settings.env == "development"
 
     LISTEN_PATHS = [
       Settings.root.join("app"),
-      Settings.root.join("db"),
+      Settings.root.join("db")
     ]
 
     def initialize

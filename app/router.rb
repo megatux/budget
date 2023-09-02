@@ -49,7 +49,7 @@ class Router < Roda
       end
 
       r.post true do
-        category = forme_set(Category.new).save
+        forme_set(Category.new).save
 
         r.redirect categories_path
       end
@@ -90,7 +90,7 @@ class Router < Roda
           forme_set(expense).save
           categories = Category.order(:name).all
 
-          turbo_stream.replace dom_id(expense), partial("expenses/expense", locals: { expense: expense, categories: categories })
+          turbo_stream.replace dom_id(expense), partial("expenses/expense", locals: {expense: expense, categories: categories})
         end
 
         r.delete true do
